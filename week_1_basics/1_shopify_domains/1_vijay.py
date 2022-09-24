@@ -1,28 +1,41 @@
 import requests
 
+def check_url(url):
+  try:
+    response = requests.get(url+'/admin', timeout=2)
+  except Exception as e:
+    return False
+  else:
+    return True
+
 def hasShopify(d_name):
-  d_name = d_name.lower().replace(' ','')
-  # has_schema = False
-  schema = d_name.split('/')
+  host_name = d_name.lower().replace(' ','').split('//')[-1]
   found_msg = 'Shopify domain exist for '
   notfound_msg = 'Shopify domain not found for '
 
-  if schema[0] == 'http:' or schema[0] == 'https:':
-    # has_schema = True
-    pass
-  elif len(schema) == 3:
-    d_name = 'https://' + schema[2]
+  url_https = 'https://' + host_name
+  if check_url(url_https):
+    url = url_https
   else:
-    d_name = 'https://' + schema[0]
-
-  url = d_name
+    url_http = 'http://' + host_name
+    url = url_http
+  
   try:
-    r = requests.get(url+'/admin')
-    if 'myshopify' in r.url.split('.'):
+    response = requests.get(url+'/admin', timeout=2)
+    if 'myshopify' in response.url.split('.'):
       return found_msg + url
     else:
       return notfound_msg + url
   except Exception as e:
     return notfound_msg + url
 
-hasShopify('happyratio.com/')
+url_list = ['https://happyratio.com/',
+'www.clayventures.in',
+'http://merojewellery.in',
+'http://jivikanaturals.com',
+'https://www.tribeshop.com',
+'http://heroku.projectoptimal.com/',
+'http://breadandbeta.com/']
+
+for url in url_list:
+  print(hasShopify(url))
