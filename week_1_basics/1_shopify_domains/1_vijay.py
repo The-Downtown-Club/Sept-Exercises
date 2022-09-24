@@ -19,10 +19,10 @@ def hasShopify(d_name):
   try:
     r = requests.get(url+'/admin')
     if 'myshopify' in r.url.split('.'):
-      print(found_msg + url)
+      return found_msg + url
     else:
-      print(notfound_msg + url)
+      return notfound_msg + url
   except Exception as e:
-    print(notfound_msg + url)
+    return notfound_msg + url
 
 hasShopify('happyratio.com/')
