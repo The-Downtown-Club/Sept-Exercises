@@ -1,6 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
-from config import DATABASE_URI
+from database.config import DATABASE_URI
+from sqlalchemy import func, select, column
 
 
 db_engine = create_engine(DATABASE_URI)

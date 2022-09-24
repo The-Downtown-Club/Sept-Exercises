@@ -1,15 +1,5 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[259]:
-
 
 import requests
-
-
-# In[266]:
-
-
 def yesno(url):
     try:
         r = requests.get(url, timeout=4)
@@ -29,10 +19,6 @@ def yesno(url):
     except:
         print("NO")
 
-
-# In[267]:
-
-
 def shopify(url):   
     
     ustr = url
@@ -42,27 +28,13 @@ def shopify(url):
 
     if (spl[0] == 'http:' or spl[0] == 'https:' ):
         yesno(url)
-        
-
     else:
         url = "https://"+ url
         yesno(url)
 
-
-# In[268]:
-
-
 ip_url = input("Enter URL : ")
 
-
-# In[269]:
-
-
 shopify(ip_url + "/admin")
-
-
-# In[ ]:
-
 
 
 
