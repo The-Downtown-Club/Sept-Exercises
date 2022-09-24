@@ -2,7 +2,7 @@ import requests
 
 def check_url(url):
   try:
-    response = requests.get(url+'/admin', timeout=2)
+    response = requests.get(url, timeout=2)
   except Exception as e:
     return False
   else:
