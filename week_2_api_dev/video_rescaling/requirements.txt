@@ -1,0 +1,5 @@
+boto3==1.19.8
+ffmpeg-python==0.2.0
+python-ffmpeg-video-streaming==0.1.15
+requests==2.25.1
+validators==0.20.0
