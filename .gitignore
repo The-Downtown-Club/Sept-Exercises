@@ -1,6 +1,6 @@
-/*.json
-/*.csv
-/*.pkl
+*.json
+*.csv
+*.pkl
 /env.py
 cat5/
 
